@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NaturaBelle Cosmetics</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #fce7f3, #fff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 1px solid #fbcfe8;
+    }
+    .animated-gradient-text {
+      background: linear-gradient(270deg, #ec4899, #f43f5e, #fb7185);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 8s ease infinite;
+    }
+    .animated-gradient-bg {
+      background: linear-gradient(270deg, #ec4899, #f43f5e, #fb7185);
+      background-size: 400% 400%;
+      animation: gradientShift 6s ease infinite;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .animated-gradient-bg:hover {
+      transform: scale(1.05);
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 9999px;
+      border: 1px solid #f9a8d4;
+      outline: none;
+      margin-bottom: 16px;
+    }
+    .hidden {
+      display: none;
+    }
+    .discount-box {
+      background: linear-gradient(to right, #fbcfe8, #fecdd3);
+      border: 1px solid #fda4af;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .code {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      background: linear-gradient(270deg, #ec4899, #f43f5e, #fb7185);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 8s ease infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="signup-section">
+      <h1 class="animated-gradient-text" style="font-size: 36px; font-family: serif; margin-bottom: 10px;">
+        NaturaBelle Cosmetics
+      </h1>
+      <p style="font-style: italic; color: #374151; margin-bottom: 20px;">
+        "Celebrate Your Natural Glow"
+      </p>
+      <p style="color: #4b5563; margin-bottom: 30px;">
+        Discover skincare and beauty products designed to enhance your natural beauty with safe, eco-friendly ingredients. Glow confidently with NaturaBelle.
+      </p>
+      <h2 class="animated-gradient-text" style="font-size: 24px; margin-bottom: 20px;">Join the Glow Club ✨</h2>
+      <form id="signup-form">
+        <input type="email" id="email" placeholder="Enter your email" required />
+        <button type="submit" class="animated-gradient-bg">Subscribe Now</button>
+      </form>
+      <p style="font-size: 12px; color: #9ca3af; margin-top: 10px;">We respect your privacy. Unsubscribe anytime.</p>
+    </div>
+
+    <div id="thankyou-section" class="hidden">
+      <h2 class="animated-gradient-text" style="font-size: 28px; font-family: serif; margin-bottom: 15px;">
+        Thank You for Joining! 🌸
+      </h2>
+      <p style="color: #374151; margin-bottom: 10px;">Welcome to the <strong>Glow Club</strong>! You’ll now receive exclusive tips, offers, and updates straight to your inbox.</p>
+      <p class="animated-gradient-text" style="font-size: 18px; margin-bottom: 20px;">
+        🎁 As a warm welcome, enjoy <u>10% off your first order</u>!
+      </p>
+
+      <div class="discount-box">
+        <p style="color:#374151; margin-bottom: 8px;">Use this code at checkout:</p>
+        <p class="code">GLOW10</p>
+        <button id="copy-btn" class="animated-gradient-bg" style="margin-top: 12px;">Copy Code</button>
+      </div>
+
+      <button id="back-btn" class="animated-gradient-bg">Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    const signupSection = document.getElementById('signup-section');
+    const thankyouSection = document.getElementById('thankyou-section');
+    const copyBtn = document.getElementById('copy-btn');
+    const backBtn = document.getElementById('back-btn');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      signupSection.classList.add('hidden');
+      thankyouSection.classList.remove('hidden');
+    });
+
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText('GLOW10');
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => copyBtn.textContent = 'Copy Code', 2000);
+    });
+
+    backBtn.addEventListener('click', function() {
+      thankyouSection.classList.add('hidden');
+      signupSection.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
